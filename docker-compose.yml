@@ -1,9 +1,9 @@
 version: "3.7"
 services:
-  nodejs-yarn:
+  node-api:
     container_name: nodejs-yarn 
-    #build: .
-    image: tofuer/nodejs-yarn:v1.0.0
+    build: .
+    #image: tofuer/node-api:v1.0.0
     user: "0:0"
     volumes:
       - ./src:/app
