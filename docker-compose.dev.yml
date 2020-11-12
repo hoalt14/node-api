@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  nodejs-yarn:
+    container_name: nodejs-yarn 
+    environment:
+      - NODE_ENV=development
+    command: yarn dev --L

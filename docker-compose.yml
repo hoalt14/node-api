@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  nodejs-yarn:
+    container_name: nodejs-yarn 
+    #build: .
+    image: tofuer/nodejs-yarn:v1.0.0
+    user: "0:0"
+    volumes:
+      - ./src:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
