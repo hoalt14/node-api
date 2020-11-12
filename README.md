@@ -10,6 +10,7 @@
   * password:
 
 * image: **tofuer/nodejs-yarn:v1.0.0**
+  * docker pull tofuer/nodejs-yarn:v1.0.0
 
 * clone source
   * git clone git@github.com:tofu14/node_api.git
