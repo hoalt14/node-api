@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "first version",
   "main": "index.js",
-  "author": "hoa.lt@pinetech.vn",
+  "author": "hoa.lt",
   "license": "MIT",
   "private": true,
   "dependencies": {
