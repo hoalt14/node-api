@@ -28,6 +28,8 @@ app.get("/create", async (req, res) => {
   return res.json(savedTest);
 });
 
+const { hello } = require("./test");
+
 app.get("/", (req, res) => {
   res.json({ message: "Hello World!", test: hello() });
 });
