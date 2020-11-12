@@ -16,11 +16,12 @@
   * cd ~
   * git clone git@github.com:tofu14/node_api.git
   * cd node_api
-  * docker-compose run --rm nodejs-yarn yarn install
+  * docker-compose run --rm nodejs-yarn yarn init
   * **if need build image**: docker build -t tofuer/nodejs-yarn:v1.0.0 .
 
 ## start environment
 * production
+  * docker-compose run --rm nodejs-yarn yarn add express
   * docker-compose up
 
 * development **(hot reloading)**
