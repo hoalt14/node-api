@@ -10,8 +10,10 @@
   * password:
 
 * image: **tofuer/nodejs-yarn:v1.0.0**
+  * docker pull tofuer/nodejs-yarn:v1.0.0
 
 * clone source
+  * cd ~
   * git clone git@github.com:tofu14/node_api.git
   * cd node_api
   * docker-compose run --rm nodejs-yarn yarn install
