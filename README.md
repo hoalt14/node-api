@@ -1,40 +1,25 @@
-# node api
+# Node API
 
-## reference
+`git clone git@github.com:hoalt14/node-api.git`
 
-- <https://kipalog.com/posts/Dev-hien-dai-phan-2--Chay-ung-dung-tren----localhost>
-- <https://kipalog.com/posts/Tu-phat-trien-toi-trien-khai-phan-1--Backend--NodeJS--API>
+## MongoDB
 
-## using docker to deploy app
+- cd mongodb
+- mkdir data
+- docker-compose up
 
-### - login docker hub
+## NodeJS
 
-- docker login
-  - username: **tofuer**
-  - password:
+- cd node
+- docker-compose run --rm yarn init
+- docker-compose run --rm yarn add express mongoose nodemon
 
-- image: **tofuer/node-api:v1.0.0**
-  - docker pull tofuer/node-api:v1.0.0
+### Build image for product environment
 
-- clone source
-  - cd ~
-  - git clone git@github.com:tofu14/node_api.git
-  - cd node_api
-  - docker-compose run --rm node-api yarn init
-  - **if need build image**: docker build -t tofuer/node-api:v1.0.0 .
+- cd node
+- docker build -t node-prod .
 
-### - start environment
+### Run
 
-- production
-  - docker-compose run --rm node-api yarn add express
-  - docker-compose up
-
-- development **(hot reloading)**
-  - docker-compose run --rm node-api yarn add nodemon --dev
-  - docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
-
-## notes
-
-- tag: docker tag node-api_node-api-app:latest tofuer/node-api:v1.0.0
-- push: docker push tofuer/node-api:v1.0.0
-- pull: docker pull tofuer/node-api:v1.0.0
+- docker-compose -f docker-compose.yml up
+- docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
