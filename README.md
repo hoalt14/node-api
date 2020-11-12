@@ -9,26 +9,26 @@
   * username: **tofuer**
   * password:
 
-* image: **tofuer/nodejs-yarn:v1.0.0**
-  * docker pull tofuer/nodejs-yarn:v1.0.0
+* image: **tofuer/node-api:v1.0.0**
+  * docker pull tofuer/node-api:v1.0.0
 
 * clone source
   * cd ~
   * git clone git@github.com:tofu14/node_api.git
   * cd node_api
-  * docker-compose run --rm nodejs-yarn yarn init
-  * **if need build image**: docker build -t tofuer/nodejs-yarn:v1.0.0 .
+  * docker-compose run --rm node-api yarn init
+  * **if need build image**: docker build -t tofuer/node-api:v1.0.0 .
 
 ## start environment
 * production
-  * docker-compose run --rm nodejs-yarn yarn add express
+  * docker-compose run --rm node-api yarn add express
   * docker-compose up
 
 * development **(hot reloading)**
-  * docker-compose run --rm nodejs-yarn yarn add nodemon --dev
+  * docker-compose run --rm node-api yarn add nodemon --dev
   * docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 ## notes
-* tag: docker tag node-api_node-api-app:latest tofuer/nodejs-yarn:v1.0.0
-* push: docker push tofuer/nodejs-yarn:v1.0.0
-* pull: docker pull tofuer/nodejs-yarn:v1.0.0
+* tag: docker tag node-api_node-api-app:latest tofuer/node-api:v1.0.0
+* push: docker push tofuer/node-api:v1.0.0
+* pull: docker pull tofuer/node-api:v1.0.0
