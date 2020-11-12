@@ -1,5 +1,5 @@
 module.exports = {
-	hello() {
-		return 'this is content of test.js';
-	}
-}
+  hello() {
+    return "this is content of test.js";
+  },
+};
