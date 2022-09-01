@@ -17,7 +17,7 @@
 - vim Dockerfile -> comment three line
 
 ```Dockerfile
-FROM node:12.18.4-alpine3.12
+FROM node:18.8.0-alpine3.15
 
 EXPOSE 3000
 WORKDIR /app
