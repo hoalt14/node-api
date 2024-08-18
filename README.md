@@ -1,46 +1,75 @@
 # Node API
 
-`gh repo clone hoalt14/node-api`
+## Prepare
 
-- docker network create backend
-- cd node-api/
+```shell
+docker network create common
+```
 
 ## MongoDB
 
-- cd mongodb/
-- mkdir data
-- docker-compose up
+cd [mongodb](./mongodb/)
+
+```shell
+docker compose up -d
+```
 
 ## NodeJS
 
-- cd node/
-- vim Dockerfile -> comment three line
+cd [node](./node/)
+
+### Comment three lines in the Dockerfile to init
 
 ```Dockerfile
-FROM node:18.8.0-alpine3.15
+FROM node:22.6.0-alpine
 
-EXPOSE 3000
 WORKDIR /app
 
-#ADD src/package.json src/yarn.lock /app/
-#RUN yarn --pure-lockfile
+COPY src /app
+# COPY src/yarn.lock /app
+# RUN yarn --pure-lockfile
 
-ADD ./src /app
+# CMD [ "yarn", "prod" ]
 
-#CMD [ "yarn", "prod" ]
+EXPOSE 3000
 ```
 
-- docker-compose run --rm node yarn init -> **`run if need build file package.json again`**
-- docker-compose run --rm node yarn add express mongoose nodemon
+### Init and Install packages
 
-### Build image for product environment
+```shell
+# Run when need update version or change something in the file package.json
+docker compose run --rm node yarn init
+```
 
-- cd node/
-- vim Dockerfile -> uncomment
-- docker build -t node-prod .
+```shell
+docker compose run --rm node yarn add express mongoose nodemon
+```
+
+### Uncomment three lines in the Dockerfile to run
+
+```Dockerfile
+FROM node:22.6.0-alpine
+
+WORKDIR /app
+
+COPY src /app
+COPY src/yarn.lock /app
+RUN yarn --pure-lockfile
+
+CMD [ "yarn", "prod" ]
+
+EXPOSE 3000
+```
 
 ### Run
 
-- docker-compose build
-- docker-compose -f docker-compose.yml up
-- docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+```shell
+# Build image
+docker compose build
+
+# Prod
+docker compose -f docker-compose.yml up
+
+# Dev (hotfix)
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+```

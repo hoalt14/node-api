@@ -1,17 +1,14 @@
-version: "3.8"
-
 services:
-    mongo:
-        container_name: mongo
-        image: mongo:4.4.1
-        volumes:
-            - ./data:/data/db
-        user: "1000:1000"
-        ports:
-            - "27017:27017"
-        networks:
-            - backend
+  mongo:
+    container_name: mongo
+    image: mongo:7.0.12
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - common
 
 networks:
-    backend:
-        external: true
+  common:
+    external: true

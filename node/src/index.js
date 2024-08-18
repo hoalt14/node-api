@@ -4,34 +4,34 @@ const express = require("express");
 const port = process.env.PORT;
 const uri = process.env.MONGO_URI;
 
-const Test = mongoose.model(
-  "Test",
-  new mongoose.Schema({}, { timestamps: true })
-);
+const testSchema = new mongoose.Schema({}, { timestamps: true });
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  keepAlive: 1,
-});
+const testModel = mongoose.model("testModel", testSchema);
+
+mongoose.connect(uri);
 
 const app = express();
 
 app.get("/list", async (req, res) => {
-  const tests = await Test.find({}).exec();
-  return res.json(tests);
+  const test = await testModel.find({}).exec();
+  return res.json(test);
 });
 
 app.get("/create", async (req, res) => {
-  const test = new Test();
-  const savedTest = await test.save();
-  return res.json(savedTest);
+  const test = new testModel();
+  const saveModel = await test.save();
+  return res.json(saveModel);
 });
 
-const { hello } = require("./test");
+const { testMessage } = require("./test");
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World!", test: hello() });
+  res.json({
+    author: "hoalt",
+    topic: "Node API",
+    version: "v1",
+    "test other message": testMessage()
+  });
 });
 
 app.listen(port, () => {

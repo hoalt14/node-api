@@ -1,11 +1,11 @@
-FROM node:18.8.0-alpine3.15
+FROM node:22.6.0-alpine
 
-EXPOSE 3000
 WORKDIR /app
 
-ADD src/package.json src/yarn.lock /app/
+COPY src /app
+COPY src/yarn.lock /app
 RUN yarn --pure-lockfile
 
-ADD ./src /app
-
 CMD [ "yarn", "prod" ]
+
+EXPOSE 3000
