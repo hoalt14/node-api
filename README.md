@@ -18,7 +18,7 @@ docker compose up -d
 
 cd [node](./node/)
 
-### Comment lines like below in Dockerfile to init
+### Comment some lines in the Dockerfile as below to init
 
 ```Dockerfile
 FROM node:22.6.0-alpine
@@ -36,7 +36,7 @@ EXPOSE 3000
 
 ### Init (Optional)
 
-**`Run when need update version or change something in the file package.json`**
+**`Only run when need update version or change something in the file package.json`**
 
 ```shell
 
