@@ -1,7 +1,7 @@
 services:
   mongo:
     container_name: mongo
-    image: mongo:7.0.12
+    image: mongo:7.0.14
     volumes:
       - ./data:/data/db
     ports:
